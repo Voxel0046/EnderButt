@@ -1,0 +1,28 @@
+cooldown-seconds: 1
+
+damage:
+  disable-pearl-projectile-damage: true
+  disable-teleport-damage: true
+
+join-item:
+  enabled: true
+  slot: 1 # 1-9 hotbar slot
+
+item:
+  name: "&#b084ff&lEnderButt"
+  lore:
+    - "&#d8c2ffRide your pearl in style."
+    - "&7Right click to launch."
+  hide-enchants: false
+  lock-in-inventory: true
+
+effects:
+  launch-particle:
+    enabled: true
+    type: PORTAL
+    count: 35
+  launch-sound:
+    enabled: true
+    type: ENTITY_ENDER_PEARL_THROW
+    volume: 1.0
+    pitch: 1.0

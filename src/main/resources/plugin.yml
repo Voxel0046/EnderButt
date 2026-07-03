@@ -1,0 +1,18 @@
+name: EnderButt
+version: 1.1.0
+main: com.voxel0046.enderbutt.EnderButtPlugin
+api-version: "1.21"
+author: Voxel0046
+description: Ride your thrown ender pearl in hub servers.
+commands:
+  enderbutt:
+    description: Reload EnderButt config
+    usage: /enderbutt reload
+    permission: enderbutt.admin
+permissions:
+  enderbutt.use:
+    default: true
+  enderbutt.joinitem:
+    default: true
+  enderbutt.admin:
+    default: op
