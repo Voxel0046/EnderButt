@@ -1,6 +1,6 @@
 package com.voxel0046.enderbutt;
 
-import net.md_5.bungee.api.ChatColor;
+import org.bukkit.ChatColor;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,15 +16,25 @@ public final class ColorUtil {
         if (text == null) return "";
 
         Matcher matcher = HEX_PATTERN.matcher(text);
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder out = new StringBuilder();
+        int last = 0;
 
         while (matcher.find()) {
-            String hex = matcher.group(1);
-            String replacement = ChatColor.of("#" + hex).toString();
-            matcher.appendReplacement(buffer, replacement);
+            out.append(text, last, matcher.start());
+            out.append(toSpigotHex(matcher.group(1)));
+            last = matcher.end();
         }
-        matcher.appendTail(buffer);
 
-        return ChatColor.translateAlternateColorCodes('&', buffer.toString());
+        out.append(text.substring(last));
+
+        return ChatColor.translateAlternateColorCodes('&', out.toString());
+    }
+
+    private static String toSpigotHex(String hex) {
+        StringBuilder sb = new StringBuilder("§x");
+        for (char c : hex.toCharArray()) {
+            sb.append('§').append(c);
+        }
+        return sb.toString();
     }
 }
